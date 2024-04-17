@@ -6,19 +6,20 @@
 //
 
 import SwiftUI
-import DSWaveformImageViews
-import DSWaveformImage
-import FloatingListItemSwiftUI
 import Media
 
 struct RecorderView: View {
     
-    @StateObject private var viewModel = RecordingViewModel(recorder: AudioRecorder())
+    private var recorder = AudioRecorder()
+    private var viewModel: RecordingViewModel
     @State var isRecording = false
     
     private let recordButtonAnimation = Animation.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.5)
     private let recordButtonTransition = AnyTransition.opacity.combined(with: .scale(scale: 0.95))
-
+    
+    init() {
+        self.viewModel = RecordingViewModel(recorder: recorder)
+    }
     
     var body: some View {
         NavigationView {
@@ -39,23 +40,13 @@ struct RecorderView: View {
             .safeAreaInset(edge: .bottom) {
                 if isRecording {
                     VStack {
-                        
-                        WaveformLiveCanvas(
-                            samples: viewModel.samples,
-                            configuration: Waveform.Configuration(style: .striped(.init(color: .red, width: 3, spacing: 3)), verticalScalingFactor: 0.9),
-                            renderer: LinearWaveformRenderer(),
-                            shouldDrawSilencePadding: true
-                        )
-                        .maxWidth(.infinity)
-                        .maxHeight(30)
-                        .padding(.bottom, .extraLarge)
+                        RecordingWaveView(recorder: recorder)
+                            .padding(.bottom, .extraLarge)
                         
                         recordingButtonView
-                            .transition(recordButtonTransition.animation(recordButtonAnimation))
                     }
                 } else {
                     recordButtonView
-                        .transition(recordButtonTransition.animation(recordButtonAnimation))
                 }
 
             }
