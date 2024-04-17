@@ -63,5 +63,6 @@ class RecordingWaveViewModel: ObservableObject {
     private func stopTimer() {
         timer?.invalidate()
         timer = nil
+        samples = []
     }
 }
