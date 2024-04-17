@@ -12,11 +12,7 @@ import WhisperKit
 
 class RecordingViewModel: ObservableObject {
     
-    private let recorder: AudioRecorder
-    
-    init(recorder: AudioRecorder) {
-        self.recorder = recorder
-    }
+    private(set) var recorder = AudioRecorder()
         
     func startRecording() async {
         do {
@@ -31,6 +27,7 @@ class RecordingViewModel: ObservableObject {
         do {
             try await recorder.stop()
             //transcribeRecording()
+            recorder = AudioRecorder()
         } catch {
             print(error)
         }

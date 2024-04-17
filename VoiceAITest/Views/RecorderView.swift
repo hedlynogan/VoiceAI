@@ -10,13 +10,9 @@ import Media
 
 struct RecorderView: View {
     
-    private var recorder = AudioRecorder()
-    private var viewModel: RecordingViewModel
-    @State var isRecording = false
+    private var viewModel = RecordingViewModel()
     
-    init() {
-        self.viewModel = RecordingViewModel(recorder: recorder)
-    }
+    @State var isRecording = false
     
     var body: some View {
         NavigationView {
@@ -37,13 +33,12 @@ struct RecorderView: View {
             .safeAreaInset(edge: .bottom) {
                 VStack {
                     if isRecording {
-                        RecordingWaveView(recorder: recorder)
+                        RecordingWaveView(recorder: viewModel.recorder)
                             .padding(.bottom, .extraLarge)
                     }
                     
                     RecordButtonView(isRecording: $isRecording, viewModel: viewModel)
                 }
-                
             }
         }
     }
