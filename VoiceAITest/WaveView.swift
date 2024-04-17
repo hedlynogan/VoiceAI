@@ -1,16 +1,16 @@
+////
+////  WaveView.swift
+////  VoiceAITest
+////
+////  Created by Natasha Murashev on 4/16/24.
+////
 //
-//  WaveView.swift
-//  VoiceAITest
+//import DSWaveformImage
+//import DSWaveformImageViews
+//import SwiftUI
+//import AVFAudio
 //
-//  Created by Natasha Murashev on 4/16/24.
 //
-
-import DSWaveformImage
-import DSWaveformImageViews
-import SwiftUI
-import AVFAudio
-
-
 //struct WaveView: View {
 //    
 //    let viewModel = WaveViewViewModel()
@@ -294,4 +294,4 @@ import AVFAudio
 //        samples += [linear, linear, linear]
 //    }
 //}
-
+//

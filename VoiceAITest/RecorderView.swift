@@ -7,11 +7,14 @@
 
 import SwiftUI
 import DSWaveformImageViews
+import DSWaveformImage
 import FloatingListItemSwiftUI
+import Media
 
 struct RecorderView: View {
     
-    @StateObject private var viewModel = RecordingViewModel()
+    @StateObject private var viewModel = RecordingViewModel(recorder: AudioRecorder())
+    @State var isRecording = false
     
     private let recordButtonAnimation = Animation.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.5)
     private let recordButtonTransition = AnyTransition.opacity.combined(with: .scale(scale: 0.95))
@@ -34,9 +37,22 @@ struct RecorderView: View {
                 }
             }
             .safeAreaInset(edge: .bottom) {
-                if viewModel.isRecording {
-                    recordingButtonView
-                        .transition(recordButtonTransition.animation(recordButtonAnimation))
+                if isRecording {
+                    VStack {
+                        
+                        WaveformLiveCanvas(
+                            samples: viewModel.samples,
+                            configuration: Waveform.Configuration(style: .striped(.init(color: .red, width: 3, spacing: 3)), verticalScalingFactor: 0.9),
+                            renderer: LinearWaveformRenderer(),
+                            shouldDrawSilencePadding: true
+                        )
+                        .maxWidth(.infinity)
+                        .maxHeight(30)
+                        .padding(.bottom, .extraLarge)
+                        
+                        recordingButtonView
+                            .transition(recordButtonTransition.animation(recordButtonAnimation))
+                    }
                 } else {
                     recordButtonView
                         .transition(recordButtonTransition.animation(recordButtonAnimation))
@@ -49,6 +65,7 @@ struct RecorderView: View {
     @ViewBuilder 
     private var recordButtonView: some View {
         Button (action: {
+            isRecording = true
             Task { @MainActor in
                 await viewModel.startRecording()
             }
@@ -70,6 +87,7 @@ struct RecorderView: View {
     @ViewBuilder
     private var recordingButtonView: some View {
         Button (action: {
+            isRecording = false
             Task { @MainActor in
                 await viewModel.stopRecording()
             }
