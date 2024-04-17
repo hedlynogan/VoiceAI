@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA9120532BCFC66100B92144 /* RecordButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9120522BCFC66100B92144 /* RecordButtonView.swift */; };
+		FA9120562BCFF78900B92144 /* RecordedObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9120552BCFF78900B92144 /* RecordedObjectModel.swift */; };
 		FA9CA9C02BCD16E0002CD535 /* VoiceAITestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CA9BF2BCD16E0002CD535 /* VoiceAITestApp.swift */; };
 		FA9CA9C22BCD16E0002CD535 /* RecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CA9C12BCD16E0002CD535 /* RecorderView.swift */; };
 		FA9CA9C42BCD16E1002CD535 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA9CA9C32BCD16E1002CD535 /* Assets.xcassets */; };
@@ -17,13 +18,13 @@
 		FA9F99752BCD19780000C28C /* RecordingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F99742BCD19780000C28C /* RecordingViewModel.swift */; };
 		FA9F99782BCE92DE0000C28C /* DSWaveformImage in Frameworks */ = {isa = PBXBuildFile; productRef = FA9F99772BCE92DE0000C28C /* DSWaveformImage */; };
 		FA9F997A2BCE92DE0000C28C /* DSWaveformImageViews in Frameworks */ = {isa = PBXBuildFile; productRef = FA9F99792BCE92DE0000C28C /* DSWaveformImageViews */; };
-		FA9F99812BCEBC750000C28C /* FloatingListItemSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = FA9F99802BCEBC750000C28C /* FloatingListItemSwiftUI */; };
 		FA9F99872BCFBE850000C28C /* RecordingWaveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F99862BCFBE850000C28C /* RecordingWaveViewModel.swift */; };
 		FA9F99892BCFBF050000C28C /* RecordingWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F99882BCFBF050000C28C /* RecordingWaveView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FA9120522BCFC66100B92144 /* RecordButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButtonView.swift; sourceTree = "<group>"; };
+		FA9120552BCFF78900B92144 /* RecordedObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedObjectModel.swift; sourceTree = "<group>"; };
 		FA9CA9BC2BCD16E0002CD535 /* VoiceAITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceAITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9CA9BF2BCD16E0002CD535 /* VoiceAITestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceAITestApp.swift; sourceTree = "<group>"; };
 		FA9CA9C12BCD16E0002CD535 /* RecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderView.swift; sourceTree = "<group>"; };
@@ -44,13 +45,20 @@
 				FA9F99782BCE92DE0000C28C /* DSWaveformImage in Frameworks */,
 				FA9F99732BCD17A80000C28C /* Media in Frameworks */,
 				FA9F997A2BCE92DE0000C28C /* DSWaveformImageViews in Frameworks */,
-				FA9F99812BCEBC750000C28C /* FloatingListItemSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA9120542BCFF75000B92144 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA9120552BCFF78900B92144 /* RecordedObjectModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FA9CA9B32BCD16E0002CD535 = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +81,7 @@
 				FA9CA9BF2BCD16E0002CD535 /* VoiceAITestApp.swift */,
 				FA9F99822BCFBE300000C28C /* Views */,
 				FA9F99852BCFBE4F0000C28C /* ViewModels */,
+				FA9120542BCFF75000B92144 /* Models */,
 				FA9CA9C32BCD16E1002CD535 /* Assets.xcassets */,
 				FA9CA9C82BCD16E1002CD535 /* VoiceAITest.entitlements */,
 				FA9CA9C52BCD16E1002CD535 /* Preview Content */,
@@ -128,7 +137,6 @@
 				FA9F99722BCD17A80000C28C /* Media */,
 				FA9F99772BCE92DE0000C28C /* DSWaveformImage */,
 				FA9F99792BCE92DE0000C28C /* DSWaveformImageViews */,
-				FA9F99802BCEBC750000C28C /* FloatingListItemSwiftUI */,
 			);
 			productName = VoiceAITest;
 			productReference = FA9CA9BC2BCD16E0002CD535 /* VoiceAITest.app */;
@@ -162,7 +170,6 @@
 				FA9F996E2BCD176E0000C28C /* XCRemoteSwiftPackageReference "WhisperKit" */,
 				FA9F99712BCD17A80000C28C /* XCRemoteSwiftPackageReference "Media" */,
 				FA9F99762BCE92DE0000C28C /* XCRemoteSwiftPackageReference "DSWaveformImage" */,
-				FA9F997F2BCEBC750000C28C /* XCRemoteSwiftPackageReference "FloatingListItemSwiftUI" */,
 			);
 			productRefGroup = FA9CA9BD2BCD16E0002CD535 /* Products */;
 			projectDirPath = "";
@@ -194,6 +201,7 @@
 				FA9F99892BCFBF050000C28C /* RecordingWaveView.swift in Sources */,
 				FA9F99752BCD19780000C28C /* RecordingViewModel.swift in Sources */,
 				FA9120532BCFC66100B92144 /* RecordButtonView.swift in Sources */,
+				FA9120562BCFF78900B92144 /* RecordedObjectModel.swift in Sources */,
 				FA9CA9C02BCD16E0002CD535 /* VoiceAITestApp.swift in Sources */,
 				FA9F99872BCFBE850000C28C /* RecordingWaveViewModel.swift in Sources */,
 			);
@@ -434,14 +442,6 @@
 				minimumVersion = 14.2.2;
 			};
 		};
-		FA9F997F2BCEBC750000C28C /* XCRemoteSwiftPackageReference "FloatingListItemSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/KaiTheRedNinja/FloatingListItemSwiftUI";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -464,11 +464,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FA9F99762BCE92DE0000C28C /* XCRemoteSwiftPackageReference "DSWaveformImage" */;
 			productName = DSWaveformImageViews;
-		};
-		FA9F99802BCEBC750000C28C /* FloatingListItemSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FA9F997F2BCEBC750000C28C /* XCRemoteSwiftPackageReference "FloatingListItemSwiftUI" */;
-			productName = FloatingListItemSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

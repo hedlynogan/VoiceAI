@@ -1,5 +1,5 @@
 {
-  "originHash" : "8ad7c31ec343a6b0a88f8a5e75182ad001d5e48bfd35ea035d9f9158d4586cea",
+  "originHash" : "1e477ba2c978689c791cdc4b16ded4e6b56f306f7ba52b8ee153f8a7c37a12cc",
   "pins" : [
     {
       "identity" : "corepersistence",
@@ -17,15 +17,6 @@
       "state" : {
         "revision" : "4c56578ee10128ee2b2c04c9c5aa73812de722db",
         "version" : "14.2.2"
-      }
-    },
-    {
-      "identity" : "floatinglistitemswiftui",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/KaiTheRedNinja/FloatingListItemSwiftUI",
-      "state" : {
-        "branch" : "main",
-        "revision" : "11616f8c23731b80a958ddc7ff0c7978abf34e1b"
       }
     },
     {
