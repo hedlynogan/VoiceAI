@@ -13,6 +13,10 @@ struct RecorderView: View {
     
     @StateObject private var viewModel = RecordingViewModel()
     
+    private let recordButtonAnimation = Animation.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.5)
+    private let recordButtonTransition = AnyTransition.opacity.combined(with: .scale(scale: 0.95))
+
+    
     var body: some View {
         NavigationView {
             List {
@@ -32,8 +36,10 @@ struct RecorderView: View {
             .safeAreaInset(edge: .bottom) {
                 if viewModel.isRecording {
                     recordingButtonView
+                        .transition(recordButtonTransition.animation(recordButtonAnimation))
                 } else {
                     recordButtonView
+                        .transition(recordButtonTransition.animation(recordButtonAnimation))
                 }
 
             }
