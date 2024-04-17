@@ -34,6 +34,7 @@
 		FA9F99742BCD19780000C28C /* RecordingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewModel.swift; sourceTree = "<group>"; };
 		FA9F99862BCFBE850000C28C /* RecordingWaveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingWaveViewModel.swift; sourceTree = "<group>"; };
 		FA9F99882BCFBF050000C28C /* RecordingWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingWaveView.swift; sourceTree = "<group>"; };
+		FAB5354A2BD025DD0046F0BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +79,7 @@
 		FA9CA9BE2BCD16E0002CD535 /* VoiceAITest */ = {
 			isa = PBXGroup;
 			children = (
+				FAB5354A2BD025DD0046F0BD /* Info.plist */,
 				FA9CA9BF2BCD16E0002CD535 /* VoiceAITestApp.swift */,
 				FA9F99822BCFBE300000C28C /* Views */,
 				FA9F99852BCFBE4F0000C28C /* ViewModels */,
@@ -342,6 +344,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VoiceAITest/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow microphone access to start recording";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -375,6 +378,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VoiceAITest/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow microphone access to start recording";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;

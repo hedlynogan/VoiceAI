@@ -28,7 +28,7 @@ struct RecorderView: View {
                 Text(recording.fileURL.absoluteString)
             }
             .navigationTitle("Voice Recorder")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.automatic)
             .overlay {
                 if recordings.count == 0 {
                     VStack {
@@ -39,16 +39,19 @@ struct RecorderView: View {
                     }
                 }
             }
-            .safeAreaInset(edge: .bottom) {
-                VStack {
-                    if isRecording {
-                        RecordingWaveView(recorder: viewModel.recorder)
-                            .padding(.bottom, .extraLarge)
-                    }
-                    
-                    RecordButtonView(isRecording: $isRecording, viewModel: viewModel)
+        }
+        .overlay(alignment: .bottom) {
+            VStack {
+                if isRecording {
+                    RecordingWaveView(recorder: viewModel.recorder)
+                        .padding(.top, .large)
                 }
+                
+                RecordButtonView(isRecording: $isRecording, viewModel: viewModel)
             }
+            .background(Material.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10))
+            .edgesIgnoringSafeArea(.bottom)
+            .padding()
         }
     }
 }
