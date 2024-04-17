@@ -14,9 +14,6 @@ struct RecorderView: View {
     private var viewModel: RecordingViewModel
     @State var isRecording = false
     
-    private let recordButtonAnimation = Animation.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.5)
-    private let recordButtonTransition = AnyTransition.opacity.combined(with: .scale(scale: 0.95))
-    
     init() {
         self.viewModel = RecordingViewModel(recorder: recorder)
     }
@@ -38,62 +35,16 @@ struct RecorderView: View {
                 }
             }
             .safeAreaInset(edge: .bottom) {
-                if isRecording {
-                    VStack {
+                VStack {
+                    if isRecording {
                         RecordingWaveView(recorder: recorder)
                             .padding(.bottom, .extraLarge)
-                        
-                        recordingButtonView
                     }
-                } else {
-                    recordButtonView
+                    
+                    RecordButtonView(isRecording: $isRecording, viewModel: viewModel)
                 }
-
-            }
-        }
-    }
-    
-    @ViewBuilder 
-    private var recordButtonView: some View {
-        Button (action: {
-            isRecording = true
-            Task { @MainActor in
-                await viewModel.startRecording()
-            }
-        }) {
-            ZStack {
-                Circle()
-                    .stroke(.white.opacity(0.8), lineWidth: 5)
-                    .frame(width: 70, height: 70)
-                    .shadow(radius: 10)
                 
-                Circle()
-                    .fill(.red.opacity(0.8))
-                    .frame(width: 50, height: 50)
             }
         }
-        .frame(width: 70, height: 80)
-    }
-    
-    @ViewBuilder
-    private var recordingButtonView: some View {
-        Button (action: {
-            isRecording = false
-            Task { @MainActor in
-                await viewModel.stopRecording()
-            }
-        }) {
-            ZStack {
-                Circle()
-                    .stroke(.white.opacity(0.8), lineWidth: 5)
-                    .frame(width: 70, height: 70)
-                    .shadow(radius: 10)
-                
-                Rectangle()
-                    .fill(.red.opacity(0.8))
-                    .frame(width: 38, height: 38)
-            }
-        }
-        .frame(width: 70, height: 80)
     }
 }

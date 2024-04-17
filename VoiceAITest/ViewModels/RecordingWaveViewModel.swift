@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import DSWaveformImageViews
 import DSWaveformImage
 import Media
 import Combine
@@ -18,6 +17,7 @@ class RecordingWaveViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     private var timer: Timer?
+    
     @Published var samples: [Float] = []
     
     let configuration = Waveform.Configuration(style:
@@ -57,7 +57,6 @@ class RecordingWaveViewModel: ObservableObject {
             let power = 1 - self.recorder.normalizedPowerLevel
             // add three times to show the wave as faster
             self.samples.append(contentsOf: [power,power,power])
-            print(samples)
         }
     }
     
