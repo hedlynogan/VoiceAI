@@ -11,7 +11,7 @@ import SwiftData
 
 struct RecorderView: View {
     
-    private var viewModel: RecordingViewModel
+    @StateObject private var viewModel: RecordingViewModel
     
     @Environment(\.modelContext) var modelContext
     @Query var recordings: [RecordedObjectModel]
@@ -19,7 +19,7 @@ struct RecorderView: View {
     @State var isRecording = false
     
     init(modelContainer: ModelContainer) {
-        self.viewModel = RecordingViewModel(modelContainer: modelContainer)
+        _viewModel = StateObject(wrappedValue: RecordingViewModel(modelContainer: modelContainer))
     }
     
     var body: some View {
