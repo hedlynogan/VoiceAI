@@ -13,9 +13,19 @@ class RecordedObjectModel {
     
     @Attribute(.unique) var fileURL: URL
     var createdDate: Date
+    var title: String
     
     init(fileURL: URL) {
         self.fileURL = fileURL
         self.createdDate = Date.now
+        self.title = "New Recording - \(RecordedObjectHelper.formattedDate)"
+    }
+}
+
+struct RecordedObjectHelper {
+    static var formattedDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, h:mm a"
+        return dateFormatter.string(from: Date.now)
     }
 }

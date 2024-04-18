@@ -25,7 +25,7 @@ struct RecorderView: View {
     var body: some View {
         NavigationView {
             List(recordings) { recording in
-                Text(recording.fileURL.absoluteString)
+                Text(recording.title)
             }
             .navigationTitle("Voice Recorder")
             .navigationBarTitleDisplayMode(.automatic)
@@ -37,6 +37,7 @@ struct RecorderView: View {
                             .foregroundStyle(.tint)
                         Text("Record to get started")
                     }
+                    .offset(y: -100)
                 }
             }
         }
