@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecordButtonView: View {
     @Binding var isRecording: Bool
-    let viewModel: RecordingViewModel
+    let viewModel: RecorderViewModel
     
     private let animation = Animation.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.5)
     private let transition = AnyTransition.opacity.combined(with: .scale(scale: 0.95))

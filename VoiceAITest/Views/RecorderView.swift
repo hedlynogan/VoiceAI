@@ -11,7 +11,7 @@ import SwiftData
 
 struct RecorderView: View {
     
-    @StateObject private var viewModel: RecordingViewModel
+    @StateObject private var viewModel: RecorderViewModel
     
     @Environment(\.modelContext) var modelContext
     @Query(sort: \RecordedObjectModel.createdDate, order: .reverse) var recordings: [RecordedObjectModel]
@@ -19,38 +19,48 @@ struct RecorderView: View {
     @State var isRecording = false
     
     init(modelContainer: ModelContainer) {
-        _viewModel = StateObject(wrappedValue: RecordingViewModel(modelContainer: modelContainer))
+        _viewModel = StateObject(wrappedValue: RecorderViewModel(modelContainer: modelContainer))
     }
     
     var body: some View {
         NavigationView {
             List(recordings) { recording in
-                Text(recording.title)
+                RecordedObjectView(recording: recording)
             }
             .navigationTitle("Voice Recorder")
             .navigationBarTitleDisplayMode(.automatic)
             .overlay {
-                if recordings.count == 0 {
-                    VStack {
-                        Image(systemName: "mic")
-                            .imageScale(.large)
-                            .foregroundStyle(.tint)
-                        Text("Record to get started")
-                    }
-                    .offset(y: -100)
-                }
+                noRecordingsView
             }
         }
         .overlay(alignment: .bottom) {
-            VStack {
-                if isRecording {
-                    RecordingWaveView(recorder: viewModel.recorder)
-                        .padding(.top, .large)
-                }
-                
-                RecordButtonView(isRecording: $isRecording, viewModel: viewModel)
+            recordButtonOverlay
+        }
+    }
+    
+    @ViewBuilder
+    private var recordButtonOverlay: some View {
+        VStack {
+            if isRecording {
+                RecordingWaveView(recorder: viewModel.recorder)
+                    .padding(.top, .large)
             }
-            .background(Material.ultraThinMaterial)
+            
+            RecordButtonView(isRecording: $isRecording, viewModel: viewModel)
+        }
+        .background(Material.ultraThinMaterial)
+    }
+    
+    @ViewBuilder
+    private var noRecordingsView: some View {
+        if recordings.count == 0 {
+            VStack {
+                Image(systemName: "mic")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                Text("Record to get started")
+            }
+            .offset(y: -100)
         }
     }
 }

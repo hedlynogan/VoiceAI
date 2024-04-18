@@ -15,11 +15,12 @@
 		FA9CA9C72BCD16E1002CD535 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA9CA9C62BCD16E1002CD535 /* Preview Assets.xcassets */; };
 		FA9F99702BCD176E0000C28C /* WhisperKit in Frameworks */ = {isa = PBXBuildFile; productRef = FA9F996F2BCD176E0000C28C /* WhisperKit */; };
 		FA9F99732BCD17A80000C28C /* Media in Frameworks */ = {isa = PBXBuildFile; productRef = FA9F99722BCD17A80000C28C /* Media */; };
-		FA9F99752BCD19780000C28C /* RecordingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F99742BCD19780000C28C /* RecordingViewModel.swift */; };
+		FA9F99752BCD19780000C28C /* RecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F99742BCD19780000C28C /* RecorderViewModel.swift */; };
 		FA9F99782BCE92DE0000C28C /* DSWaveformImage in Frameworks */ = {isa = PBXBuildFile; productRef = FA9F99772BCE92DE0000C28C /* DSWaveformImage */; };
 		FA9F997A2BCE92DE0000C28C /* DSWaveformImageViews in Frameworks */ = {isa = PBXBuildFile; productRef = FA9F99792BCE92DE0000C28C /* DSWaveformImageViews */; };
 		FA9F99872BCFBE850000C28C /* RecordingWaveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F99862BCFBE850000C28C /* RecordingWaveViewModel.swift */; };
 		FA9F99892BCFBF050000C28C /* RecordingWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F99882BCFBF050000C28C /* RecordingWaveView.swift */; };
+		FAB5354C2BD0F1C70046F0BD /* RecordedObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB5354B2BD0F1C70046F0BD /* RecordedObjectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,10 +32,11 @@
 		FA9CA9C32BCD16E1002CD535 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA9CA9C62BCD16E1002CD535 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FA9CA9C82BCD16E1002CD535 /* VoiceAITest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VoiceAITest.entitlements; sourceTree = "<group>"; };
-		FA9F99742BCD19780000C28C /* RecordingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewModel.swift; sourceTree = "<group>"; };
+		FA9F99742BCD19780000C28C /* RecorderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderViewModel.swift; sourceTree = "<group>"; };
 		FA9F99862BCFBE850000C28C /* RecordingWaveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingWaveViewModel.swift; sourceTree = "<group>"; };
 		FA9F99882BCFBF050000C28C /* RecordingWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingWaveView.swift; sourceTree = "<group>"; };
 		FAB5354A2BD025DD0046F0BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FAB5354B2BD0F1C70046F0BD /* RecordedObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedObjectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				FA9CA9C12BCD16E0002CD535 /* RecorderView.swift */,
 				FA9F99882BCFBF050000C28C /* RecordingWaveView.swift */,
 				FA9120522BCFC66100B92144 /* RecordButtonView.swift */,
+				FAB5354B2BD0F1C70046F0BD /* RecordedObjectView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -112,7 +115,7 @@
 		FA9F99852BCFBE4F0000C28C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				FA9F99742BCD19780000C28C /* RecordingViewModel.swift */,
+				FA9F99742BCD19780000C28C /* RecorderViewModel.swift */,
 				FA9F99862BCFBE850000C28C /* RecordingWaveViewModel.swift */,
 			);
 			path = ViewModels;
@@ -201,7 +204,8 @@
 			files = (
 				FA9CA9C22BCD16E0002CD535 /* RecorderView.swift in Sources */,
 				FA9F99892BCFBF050000C28C /* RecordingWaveView.swift in Sources */,
-				FA9F99752BCD19780000C28C /* RecordingViewModel.swift in Sources */,
+				FA9F99752BCD19780000C28C /* RecorderViewModel.swift in Sources */,
+				FAB5354C2BD0F1C70046F0BD /* RecordedObjectView.swift in Sources */,
 				FA9120532BCFC66100B92144 /* RecordButtonView.swift in Sources */,
 				FA9120562BCFF78900B92144 /* RecordedObjectModel.swift in Sources */,
 				FA9CA9C02BCD16E0002CD535 /* VoiceAITestApp.swift in Sources */,
