@@ -14,7 +14,7 @@ struct RecorderView: View {
     @StateObject private var viewModel: RecordingViewModel
     
     @Environment(\.modelContext) var modelContext
-    @Query var recordings: [RecordedObjectModel]
+    @Query(sort: \RecordedObjectModel.createdDate, order: .reverse) var recordings: [RecordedObjectModel]
     
     @State var isRecording = false
     

@@ -12,8 +12,10 @@ import Foundation
 class RecordedObjectModel {
     
     @Attribute(.unique) var fileURL: URL
+    var createdDate: Date
     
     init(fileURL: URL) {
         self.fileURL = fileURL
+        self.createdDate = Date.now
     }
 }
