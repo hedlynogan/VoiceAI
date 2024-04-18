@@ -28,7 +28,6 @@ struct RecorderView: View {
                 RecordedObjectView(recording: recording)
             }
             .navigationTitle("Voice Recorder")
-            .navigationBarTitleDisplayMode(.automatic)
             .overlay {
                 noRecordingsView
             }

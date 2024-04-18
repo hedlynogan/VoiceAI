@@ -21,6 +21,7 @@
 		FA9F99872BCFBE850000C28C /* RecordingWaveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F99862BCFBE850000C28C /* RecordingWaveViewModel.swift */; };
 		FA9F99892BCFBF050000C28C /* RecordingWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F99882BCFBF050000C28C /* RecordingWaveView.swift */; };
 		FAB5354C2BD0F1C70046F0BD /* RecordedObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB5354B2BD0F1C70046F0BD /* RecordedObjectView.swift */; };
+		FAB5354E2BD0F8500046F0BD /* RecordedObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB5354D2BD0F8500046F0BD /* RecordedObjectViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		FA9F99882BCFBF050000C28C /* RecordingWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingWaveView.swift; sourceTree = "<group>"; };
 		FAB5354A2BD025DD0046F0BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FAB5354B2BD0F1C70046F0BD /* RecordedObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedObjectView.swift; sourceTree = "<group>"; };
+		FAB5354D2BD0F8500046F0BD /* RecordedObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedObjectViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			children = (
 				FA9F99742BCD19780000C28C /* RecorderViewModel.swift */,
 				FA9F99862BCFBE850000C28C /* RecordingWaveViewModel.swift */,
+				FAB5354D2BD0F8500046F0BD /* RecordedObjectViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				FAB5354C2BD0F1C70046F0BD /* RecordedObjectView.swift in Sources */,
 				FA9120532BCFC66100B92144 /* RecordButtonView.swift in Sources */,
 				FA9120562BCFF78900B92144 /* RecordedObjectModel.swift in Sources */,
+				FAB5354E2BD0F8500046F0BD /* RecordedObjectViewModel.swift in Sources */,
 				FA9CA9C02BCD16E0002CD535 /* VoiceAITestApp.swift in Sources */,
 				FA9F99872BCFBE850000C28C /* RecordingWaveViewModel.swift in Sources */,
 			);

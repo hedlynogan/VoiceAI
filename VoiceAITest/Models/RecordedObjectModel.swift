@@ -22,7 +22,7 @@ class RecordedObjectModel {
     }
 }
 
-struct RecordedObjectHelper {
+private struct RecordedObjectHelper {
     static var formattedDate: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d, h:mm a"
