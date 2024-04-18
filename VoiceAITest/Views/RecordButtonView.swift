@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RecordButtonView: View {
-    @Binding var isRecording: Bool
     let viewModel: RecorderViewModel
     
     private let animation = Animation.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.5)
@@ -17,13 +16,11 @@ struct RecordButtonView: View {
     var body: some View {
         Button (action: {
             Task { @MainActor in
-                if isRecording {
+                if viewModel.isRecording {
                     await viewModel.stopRecording()
                 } else {
                     await viewModel.startRecording()
-                }
-                isRecording.toggle()
-            }
+                }            }
         }) {
             ZStack {
                 Circle()
@@ -31,7 +28,7 @@ struct RecordButtonView: View {
                     .frame(width: 70, height: 70)
                     .shadow(radius: 10)
                 
-                if isRecording {
+                if viewModel.isRecording {
                     Rectangle()
                         .fill(.red.opacity(0.8))
                         .frame(width: 38, height: 38)

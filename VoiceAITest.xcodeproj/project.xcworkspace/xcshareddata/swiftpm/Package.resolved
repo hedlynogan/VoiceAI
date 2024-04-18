@@ -31,10 +31,10 @@
     {
       "identity" : "merge",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/vmanot/Merge.git",
+      "location" : "https://github.com/vmanot/Merge",
       "state" : {
         "branch" : "master",
-        "revision" : "763d001cae2504990d264521bb4a1122b81425f4"
+        "revision" : "d2ee039b4bca917418a6a4da66bd9b8dcfd5989c"
       }
     },
     {
@@ -43,7 +43,7 @@
       "location" : "https://github.com/vmanot/Swallow.git",
       "state" : {
         "branch" : "master",
-        "revision" : "ca5ce97e2f2b097baccff90a7e619c0bd7a28aa8"
+        "revision" : "ac906193c70edf225e27e15990cc02a3954c785b"
       }
     },
     {
@@ -97,7 +97,7 @@
       "location" : "https://github.com/SwiftUIX/SwiftUIX.git",
       "state" : {
         "branch" : "master",
-        "revision" : "e2c2ba3943b5fbb4a7e691f83993962e6514cc5c"
+        "revision" : "0c7a43a1fd700cae1a32fdc3f8422fbbe78bdb36"
       }
     },
     {
@@ -115,7 +115,7 @@
       "location" : "https://github.com/argmaxinc/WhisperKit",
       "state" : {
         "branch" : "main",
-        "revision" : "8564ce2bbec03649526678f51f4e249e9e052a6c"
+        "revision" : "076b6709f3a3af98e0a611c5bfed7401eac90be1"
       }
     }
   ],

@@ -15,9 +15,7 @@ struct RecorderView: View {
     
     @Environment(\.modelContext) var modelContext
     @Query(sort: \RecordedObjectModel.createdDate, order: .reverse) var recordings: [RecordedObjectModel]
-    
-    @State var isRecording = false
-    
+        
     init(modelContainer: ModelContainer) {
         _viewModel = StateObject(wrappedValue: RecorderViewModel(modelContainer: modelContainer))
     }
@@ -40,12 +38,12 @@ struct RecorderView: View {
     @ViewBuilder
     private var recordButtonOverlay: some View {
         VStack {
-            if isRecording {
+            if viewModel.isRecording {
                 RecordingWaveView(recorder: viewModel.recorder)
                     .padding(.top, .large)
             }
             
-            RecordButtonView(isRecording: $isRecording, viewModel: viewModel)
+            RecordButtonView(viewModel: viewModel)
         }
         .background(Material.ultraThinMaterial)
     }
