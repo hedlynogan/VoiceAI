@@ -9,45 +9,25 @@ import AVFAudio
 import Media
 import SwiftUI
 import SwiftData
-import Combine
 
 class RecorderViewModel: ObservableObject {
     
     @Published private(set) var recorder = AudioRecorder()
     private let modelContainer: ModelContainer
     
-    private var cancellables = Set<AnyCancellable>()
     @Published private(set) var isRecording: Bool = false
     
     init(modelContainer: ModelContainer) {
         self.modelContainer = modelContainer
-        observeRecorderState()
-    }
-    
-    private func observeRecorderState() {
-        recorder.$state
-            .receive(on: RunLoop.main)
-            .sink { [weak self] newState in
-                self?.handleStateChange(newState)
-            }
-            .store(in: &cancellables)
-    }
-    
-    private func handleStateChange(_ newState: AudioRecorder.State) {
-        switch newState {
-        case .recording:
-            isRecording = true
-        default:
-            isRecording = false
-        }
     }
     
     @MainActor
     func startRecording() async {
         do {
-            recorder = AudioRecorder()
+            //recorder = AudioRecorder()
             try await recorder.prepare()
             try await recorder.record()
+            isRecording = true
         } catch {
             print(error)
         }
@@ -57,6 +37,7 @@ class RecorderViewModel: ObservableObject {
     func stopRecording() async {
         do {
             try await recorder.stop()
+            isRecording = false
             processRecording()
         } catch {
             print(error)
