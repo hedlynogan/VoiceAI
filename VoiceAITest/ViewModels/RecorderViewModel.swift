@@ -24,7 +24,6 @@ class RecorderViewModel: ObservableObject {
     @MainActor
     func startRecording() async {
         do {
-            //recorder = AudioRecorder()
             try await recorder.prepare()
             try await recorder.record()
             isRecording = true
@@ -48,7 +47,7 @@ class RecorderViewModel: ObservableObject {
         do {
             if let recordingData = try recorder.recording?.data() {
                 
-                let permanentURL = try saveFilePermanently(data: recordingData, with: "\(UUID().uuidString).mpg")
+                let permanentURL = try saveFilePermanently(data: recordingData, with: "\(UUID().uuidString).m4a")
                 let recordedObjectModel = RecordedObjectModel(fileURL: permanentURL)
                 let modelContext = ModelContext(modelContainer)
                 modelContext.insert(recordedObjectModel)
