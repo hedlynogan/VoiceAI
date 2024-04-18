@@ -45,6 +45,6 @@ struct RecordButtonView: View {
             }
         }
         .maxWidth(.infinity)
-        .frame(height: 100, alignment: .bottom)
+        .frame(height: 100)
     }
 }

@@ -49,9 +49,7 @@ struct RecorderView: View {
                 
                 RecordButtonView(isRecording: $isRecording, viewModel: viewModel)
             }
-            .background(Material.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10))
-            .edgesIgnoringSafeArea(.bottom)
-            .padding()
+            .background(Material.ultraThinMaterial)
         }
     }
 }
