@@ -19,16 +19,23 @@ struct RecordedObjectView: View {
     }
     
     var body: some View {
-        HStack {
-            Text(recording.title)
+        HStack(alignment: .firstTextBaseline) {
+            VStack (alignment: .leading) {
+                Text(recording.title)
+                    .font(.title2)
+                Text(viewModel.formattedDate)
+                    .italic()
+            }
+            Spacer()
             Button(action: {
                 Task { @MainActor in
                     await self.viewModel.playAudio()
                 }
             }) {
                 Image(systemName: "speaker.3.fill")
-                    .font(.title3)
+                    .font(.title2)
             }
         }
+        
     }
 }

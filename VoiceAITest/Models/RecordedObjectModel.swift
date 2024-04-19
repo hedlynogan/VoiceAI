@@ -20,14 +20,6 @@ class RecordedObjectModel {
         self.id = UUID()
         self.audioData = audioData
         self.createdDate = Date.now
-        self.title = "New Recording - \(RecordedObjectHelper.formattedDate)"
-    }
-}
-
-private struct RecordedObjectHelper {
-    static var formattedDate: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d, h:mm a"
-        return dateFormatter.string(from: Date.now)
+        self.title = "New Recording"
     }
 }

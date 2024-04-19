@@ -12,6 +12,13 @@ struct RecordedObjectViewModel {
     let recording: RecordedObjectModel
     private let audioPlayer = AudioPlayer()
     
+    var formattedDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        return dateFormatter.string(from: recording.createdDate)
+    }
+    
     @MainActor
     func playAudio() async {
         do {
