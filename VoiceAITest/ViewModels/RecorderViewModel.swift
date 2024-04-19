@@ -57,14 +57,4 @@ class RecorderViewModel: ObservableObject {
             print(error)
         }
     }
-    
-    private func saveFilePermanently(data: Data, with fileName: String) throws -> URL {
-        let fileManager = FileManager.default
-        let documentsDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-        let fileURL = documentsDirectory.appendingPathComponent(fileName)
-        
-        // Write the data to the file
-        try data.write(to: fileURL, options: .atomic)
-        return fileURL
-    }
 }
