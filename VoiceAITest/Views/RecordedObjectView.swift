@@ -23,7 +23,7 @@ struct RecordedObjectView: View {
             Text(recording.title)
             Button(action: {
                 Task { @MainActor in
-                    self.viewModel.playAudio()
+                    await self.viewModel.playAudio()
                 }
             }) {
                 Image(systemName: "speaker.3.fill")

@@ -11,12 +11,14 @@ import Foundation
 @Model
 class RecordedObjectModel {
     
-    @Attribute(.unique) var fileURL: URL
+    @Attribute(.unique) var id: UUID
+    var audioData: Data
     var createdDate: Date
     var title: String
     
-    init(fileURL: URL) {
-        self.fileURL = fileURL
+    init(audioData: Data) {
+        self.id = UUID()
+        self.audioData = audioData
         self.createdDate = Date.now
         self.title = "New Recording - \(RecordedObjectHelper.formattedDate)"
     }
