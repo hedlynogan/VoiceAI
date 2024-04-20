@@ -20,12 +20,6 @@ class RecordingWaveViewModel: ObservableObject {
     
     @Published var samples: [Float] = []
     
-    let configuration = Waveform.Configuration(style:
-            .striped(.init(color: .red,
-                           width: 3,
-                           spacing: 3)),
-                     verticalScalingFactor: 0.9)
-    
     init(recorder: AudioRecorder) {
         self.recorder = recorder
         observeRecorderState()

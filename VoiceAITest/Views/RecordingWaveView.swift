@@ -14,6 +14,12 @@ struct RecordingWaveView: View {
     
     @StateObject var viewModel: RecordingWaveViewModel
     
+    private let configuration = Waveform.Configuration(style:
+            .striped(.init(color: .red,
+                           width: 3,
+                           spacing: 3)),
+                     verticalScalingFactor: 0.9)
+    
     init(recorder: AudioRecorder) {
         _viewModel = StateObject(wrappedValue: RecordingWaveViewModel(recorder: recorder))
     }
@@ -21,7 +27,7 @@ struct RecordingWaveView: View {
     var body: some View {
         WaveformLiveCanvas(
             samples: viewModel.samples,
-            configuration: viewModel.configuration,
+            configuration: configuration,
             renderer: LinearWaveformRenderer(),
             shouldDrawSilencePadding: true
         )
