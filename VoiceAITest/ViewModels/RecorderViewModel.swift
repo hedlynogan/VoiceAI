@@ -5,14 +5,13 @@
 //  Created by Natasha Murashev on 4/15/24.
 //
 
-import AVFAudio
 import Media
 import SwiftUI
 import SwiftData
 
 class RecorderViewModel: ObservableObject {
     
-    @Published private(set) var recorder = AudioRecorder()
+    let recorder = AudioRecorder()
     private let modelContainer: ModelContainer
     
     @Published private(set) var isRecording: Bool = false

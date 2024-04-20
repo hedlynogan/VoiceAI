@@ -10,7 +10,6 @@ import Media
 
 struct RecordedObjectViewModel {
     let recording: RecordedObjectModel
-    private let audioPlayer = AudioPlayer()
     
     var formattedDate: String {
         let dateFormatter = DateFormatter()
@@ -23,7 +22,7 @@ struct RecordedObjectViewModel {
     func playAudio() async {
         do {
             if let url = urlFromData {
-                try await audioPlayer.play(url)
+                try await AudioPlayer().play(url)
             }
         } catch {
             print(error)

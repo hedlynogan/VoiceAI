@@ -1,5 +1,4 @@
 {
-  "originHash" : "1e477ba2c978689c791cdc4b16ded4e6b56f306f7ba52b8ee153f8a7c37a12cc",
   "pins" : [
     {
       "identity" : "corepersistence",
@@ -20,18 +19,9 @@
       }
     },
     {
-      "identity" : "media",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/vmanot/Media",
-      "state" : {
-        "branch" : "main",
-        "revision" : "17bfdd0485803d20e3ea77c6983c9a400d657fdb"
-      }
-    },
-    {
       "identity" : "merge",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/vmanot/Merge",
+      "location" : "https://github.com/vmanot/Merge.git",
       "state" : {
         "branch" : "master",
         "revision" : "d2ee039b4bca917418a6a4da66bd9b8dcfd5989c"
@@ -43,16 +33,7 @@
       "location" : "https://github.com/vmanot/Swallow.git",
       "state" : {
         "branch" : "master",
-        "revision" : "ac906193c70edf225e27e15990cc02a3954c785b"
-      }
-    },
-    {
-      "identity" : "swift-argument-parser",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-argument-parser.git",
-      "state" : {
-        "revision" : "c8ed701b513cf5177118a175d85fbbbcd707ab41",
-        "version" : "1.3.0"
+        "revision" : "5da98541f9b2a658f8b7911cb6bb187445190930"
       }
     },
     {
@@ -74,15 +55,6 @@
       }
     },
     {
-      "identity" : "swift-transformers",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/huggingface/swift-transformers.git",
-      "state" : {
-        "revision" : "74b94211bdc741694ed7e700a1104c72e5ba68fe",
-        "version" : "0.1.7"
-      }
-    },
-    {
       "identity" : "swiftui-introspect",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/siteline/SwiftUI-Introspect",
@@ -97,7 +69,7 @@
       "location" : "https://github.com/SwiftUIX/SwiftUIX.git",
       "state" : {
         "branch" : "master",
-        "revision" : "0c7a43a1fd700cae1a32fdc3f8422fbbe78bdb36"
+        "revision" : "0745416f8315d449511e3929094387871bf946bd"
       }
     },
     {
@@ -108,16 +80,7 @@
         "branch" : "main",
         "revision" : "98cb42a1ca684494e0104b6930122fab841b71b9"
       }
-    },
-    {
-      "identity" : "whisperkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/argmaxinc/WhisperKit",
-      "state" : {
-        "branch" : "main",
-        "revision" : "076b6709f3a3af98e0a611c5bfed7401eac90be1"
-      }
     }
   ],
-  "version" : 3
+  "version" : 2
 }

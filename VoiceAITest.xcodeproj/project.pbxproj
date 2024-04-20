@@ -13,7 +13,6 @@
 		FA9CA9C22BCD16E0002CD535 /* RecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CA9C12BCD16E0002CD535 /* RecorderView.swift */; };
 		FA9CA9C42BCD16E1002CD535 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA9CA9C32BCD16E1002CD535 /* Assets.xcassets */; };
 		FA9CA9C72BCD16E1002CD535 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA9CA9C62BCD16E1002CD535 /* Preview Assets.xcassets */; };
-		FA9F99702BCD176E0000C28C /* WhisperKit in Frameworks */ = {isa = PBXBuildFile; productRef = FA9F996F2BCD176E0000C28C /* WhisperKit */; };
 		FA9F99732BCD17A80000C28C /* Media in Frameworks */ = {isa = PBXBuildFile; productRef = FA9F99722BCD17A80000C28C /* Media */; };
 		FA9F99752BCD19780000C28C /* RecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F99742BCD19780000C28C /* RecorderViewModel.swift */; };
 		FA9F99782BCE92DE0000C28C /* DSWaveformImage in Frameworks */ = {isa = PBXBuildFile; productRef = FA9F99772BCE92DE0000C28C /* DSWaveformImage */; };
@@ -39,6 +38,7 @@
 		FAB5354A2BD025DD0046F0BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FAB5354B2BD0F1C70046F0BD /* RecordedObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedObjectView.swift; sourceTree = "<group>"; };
 		FAB5354D2BD0F8500046F0BD /* RecordedObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedObjectViewModel.swift; sourceTree = "<group>"; };
+		FAEAD74F2BD3CF16001303D2 /* Media */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Media; path = ../../Media; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +46,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA9F99702BCD176E0000C28C /* WhisperKit in Frameworks */,
 				FA9F99782BCE92DE0000C28C /* DSWaveformImage in Frameworks */,
 				FA9F99732BCD17A80000C28C /* Media in Frameworks */,
 				FA9F997A2BCE92DE0000C28C /* DSWaveformImageViews in Frameworks */,
@@ -83,6 +82,7 @@
 		FA9CA9BE2BCD16E0002CD535 /* VoiceAITest */ = {
 			isa = PBXGroup;
 			children = (
+				FAEAD74F2BD3CF16001303D2 /* Media */,
 				FAB5354A2BD025DD0046F0BD /* Info.plist */,
 				FA9CA9BF2BCD16E0002CD535 /* VoiceAITestApp.swift */,
 				FA9F99822BCFBE300000C28C /* Views */,
@@ -141,7 +141,6 @@
 			);
 			name = VoiceAITest;
 			packageProductDependencies = (
-				FA9F996F2BCD176E0000C28C /* WhisperKit */,
 				FA9F99722BCD17A80000C28C /* Media */,
 				FA9F99772BCE92DE0000C28C /* DSWaveformImage */,
 				FA9F99792BCE92DE0000C28C /* DSWaveformImageViews */,
@@ -175,7 +174,6 @@
 			);
 			mainGroup = FA9CA9B32BCD16E0002CD535;
 			packageReferences = (
-				FA9F996E2BCD176E0000C28C /* XCRemoteSwiftPackageReference "WhisperKit" */,
 				FA9F99712BCD17A80000C28C /* XCRemoteSwiftPackageReference "Media" */,
 				FA9F99762BCE92DE0000C28C /* XCRemoteSwiftPackageReference "DSWaveformImage" */,
 			);
@@ -364,7 +362,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.natashatherobot.VoiceAITest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -398,7 +396,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.natashatherobot.VoiceAITest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -430,14 +428,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FA9F996E2BCD176E0000C28C /* XCRemoteSwiftPackageReference "WhisperKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/argmaxinc/WhisperKit";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		FA9F99712BCD17A80000C28C /* XCRemoteSwiftPackageReference "Media" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vmanot/Media";
@@ -457,11 +447,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FA9F996F2BCD176E0000C28C /* WhisperKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FA9F996E2BCD176E0000C28C /* XCRemoteSwiftPackageReference "WhisperKit" */;
-			productName = WhisperKit;
-		};
 		FA9F99722BCD17A80000C28C /* Media */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FA9F99712BCD17A80000C28C /* XCRemoteSwiftPackageReference "Media" */;
