@@ -29,10 +29,9 @@ struct RecorderView: View {
             .overlay {
                 noRecordingsView
             }
-            .padding(.bottom, 100)
-        }
-        .overlay(alignment: .bottom) {
-            recordButtonOverlay
+            .safeAreaInset(edge: .bottom) {
+                recordButtonOverlay
+            }
         }
     }
     
