@@ -11,18 +11,18 @@ struct RecordedObjectView: View {
     
     let recording: RecordedObjectModel
     
-    private let viewModel: RecordedObjectViewModel
+    @StateObject private var viewModel: RecordedObjectViewModel
     
     init(recording: RecordedObjectModel) {
         self.recording = recording
-        self.viewModel = RecordedObjectViewModel(recording: recording)
+        _viewModel = StateObject(wrappedValue:RecordedObjectViewModel(recording: recording))
     }
     
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
             recordingInfoView
             Spacer()
-            playAudioButtion
+            toggleAudioButton
         }
     }
     
@@ -37,14 +37,40 @@ struct RecordedObjectView: View {
     }
     
     @ViewBuilder
-    private var playAudioButtion: some View {
+    private var toggleAudioButton: some View {
+        if viewModel.isPlaying {
+            stopButton
+        } else {
+            playButton
+        }
+    }
+    
+    
+    @ViewBuilder
+    private var playButton: some View {
         Button(action: {
             Task { @MainActor in
-                await self.viewModel.playAudio()
+                await viewModel.playAudio()
             }
         }) {
             Image(systemName: "speaker.3.fill")
                 .font(.title2)
+                .frame(width: 44, height: 44, alignment: .center)
+            
+        }
+    }
+    
+    @ViewBuilder
+    private var stopButton: some View {
+        Button(action: {
+            Task { @MainActor in
+                await viewModel.stopAudio()
+            }
+        }) {
+            Image(systemName: "stop.fill")
+                .font(.title2)
+                .foregroundColor(.red)
+                .frame(width: 44, height: 44, alignment: .center)
         }
     }
 }

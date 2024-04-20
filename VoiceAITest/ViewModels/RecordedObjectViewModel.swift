@@ -8,8 +8,15 @@
 import SwiftUI
 import Media
 
-struct RecordedObjectViewModel {
+class RecordedObjectViewModel: ObservableObject {
+    
     let recording: RecordedObjectModel
+    private let audioPlayer = AudioPlayer()
+    @Published private(set) var isPlaying = false
+    
+    init(recording: RecordedObjectModel) {
+        self.recording = recording
+    }
     
     var formattedDate: String {
         let dateFormatter = DateFormatter()
@@ -18,13 +25,23 @@ struct RecordedObjectViewModel {
         return dateFormatter.string(from: recording.createdDate)
     }
     
+
     @MainActor
     func playAudio() async {
+        isPlaying = true
         do {
-            try await AudioPlayer().play(recording.audioData, fileTypeHint: nil)
+            try await audioPlayer.play(recording.audioData, fileTypeHint: nil)
+            isPlaying = false
         } catch {
+            isPlaying = false
             print(error)
         }
         
+    }
+    
+    @MainActor
+    func stopAudio() async {
+        audioPlayer.stop()
+        isPlaying = false
     }
 }
