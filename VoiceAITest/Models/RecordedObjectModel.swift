@@ -23,3 +23,26 @@ class RecordedObjectModel {
         self.title = "New Recording"
     }
 }
+
+extension RecordedObjectModel {
+    var urlFromData: URL? {
+        do {
+            guard let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+                print("Failed to get the documents directory")
+                return nil
+            }
+            
+            #if os(iOS)
+            let fileURL = directory.appendingPathComponent("\(id).mp3")
+            #elseif os(macOS)
+            let fileURL = directory.appendingPathComponent("\(id).ccp")
+            #endif
+            try audioData.write(to: fileURL, options: .atomic)
+            return fileURL
+        } catch {
+            print("Failed to write data: \(error)")
+            return nil
+        }
+        
+    }
+}

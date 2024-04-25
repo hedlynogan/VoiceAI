@@ -14,7 +14,6 @@ class WhisperKitDownloadManager: ObservableObject {
     private let modelStorage: String = "huggingface/models/argmaxinc/whisperkit-coreml"
     private var availableModels: [String] = []
     private var disabledModels: [String] = WhisperKit.recommendedModels().disabled
-    private var whisperKit: WhisperKit? = nil
     private let repoName = "argmaxinc/whisperkit-coreml"
     private var specializationProgressRatio: Float = 0.7
     
@@ -24,6 +23,7 @@ class WhisperKitDownloadManager: ObservableObject {
     private let model: String = ModelVariant.largev3.description
     #endif
     
+    private(set) var whisperKit: WhisperKit? = nil
     private(set) var localModelPath: String = ""
     private(set) var localModels: [String] = []
     
