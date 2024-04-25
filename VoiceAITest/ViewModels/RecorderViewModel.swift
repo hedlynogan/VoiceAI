@@ -36,13 +36,13 @@ class RecorderViewModel: ObservableObject {
         do {
             try await recorder.stop()
             isRecording = false
-            processRecording()
+            await processRecording()
         } catch {
             print(error)
         }
     }
     
-    private func processRecording() {
+    private func processRecording() async {
         do {
             if let recordingData = try recorder.recording?.data() {
                 
@@ -50,6 +50,8 @@ class RecorderViewModel: ObservableObject {
                 let modelContext = ModelContext(modelContainer)
                 modelContext.insert(recordedObjectModel)
                 try modelContext.save()
+                
+                await TranscriptionManager.getTranscription(fromRecording: recordedObjectModel)
             }
             
         } catch {

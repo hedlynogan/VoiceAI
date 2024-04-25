@@ -22,19 +22,26 @@ struct RecorderView: View {
     
     var body: some View {
         NavigationView {
-            List(recordings) { recording in
-                RecordedObjectView(recording: recording).swipeActions {
-                    Button("Delete", systemImage: "trash", role: .destructive) {
-                        modelContext.delete(recording)
+            VStack {
+                List(recordings) { recording in
+                    RecordedObjectView(recording: recording).swipeActions {
+                        Button("Delete", systemImage: "trash", role: .destructive) {
+                            modelContext.delete(recording)
+                        }
                     }
                 }
-            }
-            .navigationTitle("Voice Recorder")
-            .overlay {
-                noRecordingsView
-            }
-            .safeAreaInset(edge: .bottom) {
-                recordButtonOverlay
+                .navigationTitle("Voice Recorder")
+                .overlay {
+                    noRecordingsView
+                }
+                .safeAreaInset(edge: .bottom) {
+                    recordButtonOverlay
+                }
+                .onAppear {
+                    Task { @MainActor in
+                        WhisperKitDownloadManager.shared.downloadModel()
+                    }
+                }
             }
         }
     }

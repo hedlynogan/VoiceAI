@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		FA9120532BCFC66100B92144 /* RecordButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9120522BCFC66100B92144 /* RecordButtonView.swift */; };
 		FA9120562BCFF78900B92144 /* RecordedObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9120552BCFF78900B92144 /* RecordedObjectModel.swift */; };
+		FA9474002BDA12AF00A73E65 /* WhisperKit in Frameworks */ = {isa = PBXBuildFile; productRef = FA9473FF2BDA12AF00A73E65 /* WhisperKit */; };
+		FA9474022BDA163A00A73E65 /* WhisperKitDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9474012BDA163A00A73E65 /* WhisperKitDownloadManager.swift */; };
 		FA9CA9C02BCD16E0002CD535 /* VoiceAITestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CA9BF2BCD16E0002CD535 /* VoiceAITestApp.swift */; };
 		FA9CA9C22BCD16E0002CD535 /* RecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CA9C12BCD16E0002CD535 /* RecorderView.swift */; };
 		FA9CA9C42BCD16E1002CD535 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA9CA9C32BCD16E1002CD535 /* Assets.xcassets */; };
@@ -21,11 +23,14 @@
 		FA9F99892BCFBF050000C28C /* RecordingWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F99882BCFBF050000C28C /* RecordingWaveView.swift */; };
 		FAB5354C2BD0F1C70046F0BD /* RecordedObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB5354B2BD0F1C70046F0BD /* RecordedObjectView.swift */; };
 		FAB5354E2BD0F8500046F0BD /* RecordedObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB5354D2BD0F8500046F0BD /* RecordedObjectViewModel.swift */; };
+		FABFA6582BD7E844003E1DAE /* TranscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABFA6572BD7E844003E1DAE /* TranscriptionManager.swift */; };
+		FAEAD7602BD3FB20001303D2 /* AI in Frameworks */ = {isa = PBXBuildFile; productRef = FAEAD75F2BD3FB20001303D2 /* AI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FA9120522BCFC66100B92144 /* RecordButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButtonView.swift; sourceTree = "<group>"; };
 		FA9120552BCFF78900B92144 /* RecordedObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedObjectModel.swift; sourceTree = "<group>"; };
+		FA9474012BDA163A00A73E65 /* WhisperKitDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperKitDownloadManager.swift; sourceTree = "<group>"; };
 		FA9CA9BC2BCD16E0002CD535 /* VoiceAITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceAITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9CA9BF2BCD16E0002CD535 /* VoiceAITestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceAITestApp.swift; sourceTree = "<group>"; };
 		FA9CA9C12BCD16E0002CD535 /* RecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderView.swift; sourceTree = "<group>"; };
@@ -38,7 +43,8 @@
 		FAB5354A2BD025DD0046F0BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FAB5354B2BD0F1C70046F0BD /* RecordedObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedObjectView.swift; sourceTree = "<group>"; };
 		FAB5354D2BD0F8500046F0BD /* RecordedObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedObjectViewModel.swift; sourceTree = "<group>"; };
-		FAEAD74F2BD3CF16001303D2 /* Media */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Media; path = ../../Media; sourceTree = "<group>"; };
+		FABFA6572BD7E844003E1DAE /* TranscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionManager.swift; sourceTree = "<group>"; };
+		FAEAD7612BD76299001303D2 /* AI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AI; path = ../../AI; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +52,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAEAD7602BD3FB20001303D2 /* AI in Frameworks */,
 				FA9F99782BCE92DE0000C28C /* DSWaveformImage in Frameworks */,
+				FA9474002BDA12AF00A73E65 /* WhisperKit in Frameworks */,
 				FA9F99732BCD17A80000C28C /* Media in Frameworks */,
 				FA9F997A2BCE92DE0000C28C /* DSWaveformImageViews in Frameworks */,
 			);
@@ -82,12 +90,13 @@
 		FA9CA9BE2BCD16E0002CD535 /* VoiceAITest */ = {
 			isa = PBXGroup;
 			children = (
-				FAEAD74F2BD3CF16001303D2 /* Media */,
+				FAEAD7612BD76299001303D2 /* AI */,
 				FAB5354A2BD025DD0046F0BD /* Info.plist */,
 				FA9CA9BF2BCD16E0002CD535 /* VoiceAITestApp.swift */,
 				FA9F99822BCFBE300000C28C /* Views */,
 				FA9F99852BCFBE4F0000C28C /* ViewModels */,
 				FA9120542BCFF75000B92144 /* Models */,
+				FABFA6562BD7E81E003E1DAE /* AIManagers */,
 				FA9CA9C32BCD16E1002CD535 /* Assets.xcassets */,
 				FA9CA9C82BCD16E1002CD535 /* VoiceAITest.entitlements */,
 				FA9CA9C52BCD16E1002CD535 /* Preview Content */,
@@ -124,6 +133,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		FABFA6562BD7E81E003E1DAE /* AIManagers */ = {
+			isa = PBXGroup;
+			children = (
+				FABFA6572BD7E844003E1DAE /* TranscriptionManager.swift */,
+				FA9474012BDA163A00A73E65 /* WhisperKitDownloadManager.swift */,
+			);
+			path = AIManagers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,6 +162,8 @@
 				FA9F99722BCD17A80000C28C /* Media */,
 				FA9F99772BCE92DE0000C28C /* DSWaveformImage */,
 				FA9F99792BCE92DE0000C28C /* DSWaveformImageViews */,
+				FAEAD75F2BD3FB20001303D2 /* AI */,
+				FA9473FF2BDA12AF00A73E65 /* WhisperKit */,
 			);
 			productName = VoiceAITest;
 			productReference = FA9CA9BC2BCD16E0002CD535 /* VoiceAITest.app */;
@@ -176,6 +196,8 @@
 			packageReferences = (
 				FA9F99712BCD17A80000C28C /* XCRemoteSwiftPackageReference "Media" */,
 				FA9F99762BCE92DE0000C28C /* XCRemoteSwiftPackageReference "DSWaveformImage" */,
+				FAEAD75E2BD3FB20001303D2 /* XCRemoteSwiftPackageReference "AI" */,
+				FA9473FE2BDA12AF00A73E65 /* XCRemoteSwiftPackageReference "WhisperKit" */,
 			);
 			productRefGroup = FA9CA9BD2BCD16E0002CD535 /* Products */;
 			projectDirPath = "";
@@ -211,7 +233,9 @@
 				FA9120562BCFF78900B92144 /* RecordedObjectModel.swift in Sources */,
 				FAB5354E2BD0F8500046F0BD /* RecordedObjectViewModel.swift in Sources */,
 				FA9CA9C02BCD16E0002CD535 /* VoiceAITestApp.swift in Sources */,
+				FABFA6582BD7E844003E1DAE /* TranscriptionManager.swift in Sources */,
 				FA9F99872BCFBE850000C28C /* RecordingWaveViewModel.swift in Sources */,
+				FA9474022BDA163A00A73E65 /* WhisperKitDownloadManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +387,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.natashatherobot.VoiceAITest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -398,7 +422,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.natashatherobot.VoiceAITest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -430,6 +454,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FA9473FE2BDA12AF00A73E65 /* XCRemoteSwiftPackageReference "WhisperKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/argmaxinc/WhisperKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		FA9F99712BCD17A80000C28C /* XCRemoteSwiftPackageReference "Media" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vmanot/Media";
@@ -446,9 +478,22 @@
 				minimumVersion = 14.2.2;
 			};
 		};
+		FAEAD75E2BD3FB20001303D2 /* XCRemoteSwiftPackageReference "AI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PreternaturalAI/AI";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FA9473FF2BDA12AF00A73E65 /* WhisperKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA9473FE2BDA12AF00A73E65 /* XCRemoteSwiftPackageReference "WhisperKit" */;
+			productName = WhisperKit;
+		};
 		FA9F99722BCD17A80000C28C /* Media */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FA9F99712BCD17A80000C28C /* XCRemoteSwiftPackageReference "Media" */;
@@ -463,6 +508,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FA9F99762BCE92DE0000C28C /* XCRemoteSwiftPackageReference "DSWaveformImage" */;
 			productName = DSWaveformImageViews;
+		};
+		FAEAD75F2BD3FB20001303D2 /* AI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAEAD75E2BD3FB20001303D2 /* XCRemoteSwiftPackageReference "AI" */;
+			productName = AI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
