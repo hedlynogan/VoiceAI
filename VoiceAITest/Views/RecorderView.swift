@@ -12,6 +12,7 @@ import SwiftData
 struct RecorderView: View {
     
     @StateObject private var viewModel: RecorderViewModel
+    @StateObject private var whisperKitDownloadManager = WhisperKitDownloadManager.shared
     
     @Environment(\.modelContext) var modelContext
     @Query(sort: \RecordedObjectModel.createdDate, order: .reverse) var recordings: [RecordedObjectModel]
@@ -23,6 +24,12 @@ struct RecorderView: View {
     var body: some View {
         NavigationView {
             VStack {
+                if WhisperKitDownloadManager.shared.downloadProgress < 1.0 {
+                    VStack {
+                        Text("AI Model Download Progress: \(String(format: "%.2f", whisperKitDownloadManager.downloadProgress * 100))%")
+                            .italic()
+                    }
+                }
                 List(recordings) { recording in
                     RecordedObjectView(recording: recording).swipeActions {
                         Button("Delete", systemImage: "trash", role: .destructive) {
@@ -39,7 +46,7 @@ struct RecorderView: View {
                 }
                 .onAppear {
                     Task { @MainActor in
-                        WhisperKitDownloadManager.shared.downloadModel()
+                        whisperKitDownloadManager.downloadModel()
                     }
                 }
             }
