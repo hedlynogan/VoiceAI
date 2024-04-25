@@ -84,6 +84,9 @@ class TranscriptionManager {
             self.currentLag = transcription?.timings.decodingLoop ?? 0
 
             self.confirmedSegments = segments
+            if let transcription = transcription {
+                recording.processTranscription(transcription)
+            }
         }
     }
     

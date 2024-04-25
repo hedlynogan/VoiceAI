@@ -7,14 +7,21 @@
 
 import SwiftData
 import Foundation
+import WhisperKit
 
 @Model
 class RecordedObjectModel {
     
     @Attribute(.unique) var id: UUID
-    var audioData: Data
-    var createdDate: Date
+    let audioData: Data
+    let createdDate: Date
     var title: String
+    
+    var transcribed: Bool = false
+    var fullText: String?
+    
+    @Relationship(deleteRule: .cascade, inverse: \RecordedSegmentModel.recording) var segments: [RecordedSegmentModel]?
+    
     
     init(audioData: Data) {
         self.id = UUID()
@@ -43,6 +50,20 @@ extension RecordedObjectModel {
             print("Failed to write data: \(error)")
             return nil
         }
-        
+    }
+    
+    func processTranscription(_ transcription: TranscriptionResult) {
+        fullText = transcription.text
+        transcribed = true
+        transcription.segments.forEach {
+            let segmentModel = RecordedSegmentModel(recording: self, segment: $0)
+            modelContext?.insert(segmentModel)
+        }
+        modelContext?.insert(self)
+        do {
+            try modelContext?.save()
+        } catch {
+            print(error)
+        }
     }
 }

@@ -6,7 +6,7 @@
       "location" : "https://github.com/vmanot/CorePersistence.git",
       "state" : {
         "branch" : "main",
-        "revision" : "b181c34b28f17a002feca00afba562fa90bedde3"
+        "revision" : "23e71ad0933b475db824984c1c6e20f50cf1d851"
       }
     },
     {
@@ -24,7 +24,7 @@
       "location" : "https://github.com/vmanot/Media",
       "state" : {
         "branch" : "main",
-        "revision" : "6725c73109f3df8ade7b072eb08c003f0c9e4956"
+        "revision" : "f65a1a8a331f33f240a21e8dd0d4a44507863c89"
       }
     },
     {
@@ -33,7 +33,7 @@
       "location" : "https://github.com/vmanot/Merge.git",
       "state" : {
         "branch" : "master",
-        "revision" : "c6960927bfa866c4d45b43536bfe62b34293cc52"
+        "revision" : "8b3d1ec5e77dbd4ea074bd99b14d5ba74fcdb16d"
       }
     },
     {
@@ -51,7 +51,7 @@
       "location" : "https://github.com/vmanot/Swallow.git",
       "state" : {
         "branch" : "master",
-        "revision" : "7cb2eb762c1d337492390a07ca9dedc0532db10a"
+        "revision" : "60080d164fb2844a389e2aeae58d6adbe496fff9"
       }
     },
     {
@@ -114,7 +114,7 @@
       "location" : "https://github.com/SwiftUIX/SwiftUIX.git",
       "state" : {
         "branch" : "master",
-        "revision" : "ebeba92a73a9fdfea2c1894c5b266f6d15f893e2"
+        "revision" : "7bcf0edc7eb8454db168a1495290e7ee79f1342e"
       }
     },
     {
