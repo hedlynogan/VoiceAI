@@ -18,7 +18,7 @@ class RecordedObjectModel {
     var title: String
     
     var transcribed: Bool = false
-    var fullText: String?
+    var fullTextData: Data?
     
     @Relationship(deleteRule: .cascade, inverse: \RecordedSegmentModel.recording) var segments: [RecordedSegmentModel]?
     
@@ -52,8 +52,16 @@ extension RecordedObjectModel {
         }
     }
     
+    var fullText: String? {
+        if let fullTextData = fullTextData {
+            return String(data: fullTextData, encoding: .utf8)
+        }
+        
+        return nil
+    }
+    
     func processTranscription(_ transcription: TranscriptionResult) {
-        fullText = transcription.text
+        fullTextData = Data(transcription.text.utf8)
         transcribed = true
         transcription.segments.forEach {
             let segmentModel = RecordedSegmentModel(recording: self, segment: $0)
@@ -66,4 +74,7 @@ extension RecordedObjectModel {
             print(error)
         }
     }
+    
+    // TODO: query all models that have not been transcribed and transcribe them
+    // TODO: query all models that haven't had analysis done, and do it
 }

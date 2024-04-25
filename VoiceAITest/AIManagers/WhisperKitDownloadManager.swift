@@ -48,6 +48,7 @@ class WhisperKitDownloadManager: ObservableObject {
                     let downloadedModels = try FileManager.default.contentsOfDirectory(atPath: modelPath)
                     for model in downloadedModels where !localModels.contains(model) {
                         localModels.append(model)
+                        modelState = .downloaded
                     }
                 } catch {
                     print("Error enumerating files at \(modelPath): \(error.localizedDescription)")

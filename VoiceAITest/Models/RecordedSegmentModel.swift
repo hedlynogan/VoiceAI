@@ -16,7 +16,7 @@ class RecordedSegmentModel {
     let segmentIndex: Int
     let startTime: Float
     let endTime: Float
-    let text: String
+    let textData: Data
     
     let recording: RecordedObjectModel
     
@@ -25,12 +25,16 @@ class RecordedSegmentModel {
         self.segmentIndex = segment.id
         self.startTime = segment.start
         self.endTime = segment.end
-        self.text = segment.text
+        self.textData = Data(segment.text.utf8)
         self.recording = recording
     }
 }
 
 extension RecordedSegmentModel {
+    
+    var text: String? {
+        return String(data: textData, encoding: .utf8)
+    }
     
     var formattedTimestampText: String {
         return "[\(formatTimestamp(startTime)) --> \(formatTimestamp(endTime))] "

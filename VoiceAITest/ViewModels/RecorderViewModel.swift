@@ -52,7 +52,7 @@ class RecorderViewModel: ObservableObject {
                 try modelContext.save()
                 
                 Task(priority: .userInitiated) {
-                    let transcriptionManager = TranscriptionManager(recording: recordedObjectModel)
+                    let transcriptionManager = TranscriptionCreationManager(recording: recordedObjectModel)
                     await transcriptionManager.getTranscription()
                 }
             }

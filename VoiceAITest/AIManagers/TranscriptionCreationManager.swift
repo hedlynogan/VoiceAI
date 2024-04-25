@@ -5,16 +5,10 @@
 //  Created by Natasha Murashev on 4/23/24.
 //
 
-import AI
 import AVFAudio
 import WhisperKit
 
-class TranscriptionManager {
-    // IMPORTANT: Store your keys securely via a Proxy
-    let client: OpenAI.APIClient = OpenAI.APIClient(
-        apiKey: "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"
-    )
-    
+class TranscriptionCreationManager {
     let recording: RecordedObjectModel
     let languageCode: String = "en"
     let task: DecodingTask = .transcribe
