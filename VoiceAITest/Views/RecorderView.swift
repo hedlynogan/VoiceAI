@@ -15,7 +15,7 @@ struct RecorderView: View {
     @StateObject private var whisperKitDownloadManager = WhisperKitDownloadManager.shared
     
     @Environment(\.modelContext) var modelContext
-    @Query(sort: \Recording.createdDate, order: .reverse) var recordings: [Recording]
+    //@Query(sort: \Recording.createdDate, order: .reverse) var recordings: [Recording]
         
     init(modelContainer: ModelContainer) {
         _viewModel = StateObject(wrappedValue: RecorderViewModel(modelContainer: modelContainer))
@@ -30,7 +30,7 @@ struct RecorderView: View {
                             .italic()
                     }
                 }
-                List(recordings) { recording in
+                List(viewModel.recordings) { recording in
                     RecordingView(recording: recording).swipeActions {
                         Button("Delete", systemImage: "trash", role: .destructive) {
                             modelContext.delete(recording)
@@ -70,7 +70,7 @@ struct RecorderView: View {
     
     @ViewBuilder
     private var noRecordingsView: some View {
-        if recordings.count == 0 {
+        if viewModel.recordings.count == 0 {
             VStack {
                 Image(systemName: "mic")
                     .imageScale(.large)

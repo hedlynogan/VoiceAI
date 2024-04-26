@@ -126,9 +126,9 @@
 			isa = PBXGroup;
 			children = (
 				FA9CA9C12BCD16E0002CD535 /* RecorderView.swift */,
+				FAB5354B2BD0F1C70046F0BD /* RecordingView.swift */,
 				FA9F99882BCFBF050000C28C /* RecordingWaveView.swift */,
 				FA9120522BCFC66100B92144 /* RecordButtonView.swift */,
-				FAB5354B2BD0F1C70046F0BD /* RecordingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

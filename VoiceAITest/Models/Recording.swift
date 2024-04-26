@@ -131,4 +131,16 @@ extension Recording {
             print(error)
         }
     }
+    
+    static func getRecordings(modelContext: ModelContext) -> [Recording] {
+        let fetchDescriptor = FetchDescriptor<Recording>(sortBy: [SortDescriptor(\.createdDate, order: .reverse)])
+        
+        do {
+            return try modelContext.fetch(fetchDescriptor)
+        } catch {
+            print(error)
+        }
+        
+        return []
+    }
 }

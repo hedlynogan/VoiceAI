@@ -35,6 +35,7 @@ struct RecordingView: View {
             }
             Text(recording.title)
                 .font(.title)
+                .lineLimit(nil)
             Text(viewModel.formattedDate)
                 .italic()
             if let summary = recording.summary {

@@ -15,9 +15,12 @@ class RecorderViewModel: ObservableObject {
     private let modelContainer: ModelContainer
     
     @Published private(set) var isRecording: Bool = false
+    @Published private(set) var recordings: [Recording]
     
     init(modelContainer: ModelContainer) {
         self.modelContainer = modelContainer
+        let modelContext = ModelContext(modelContainer)
+        self.recordings = Recording.getRecordings(modelContext: modelContext)
     }
     
     @MainActor
@@ -51,9 +54,16 @@ class RecorderViewModel: ObservableObject {
                 modelContext.insert(recording)
                 try modelContext.save()
                 
+                await MainActor.run {
+                    self.recordings = Recording.getRecordings(modelContext: modelContext)
+                }
+                
                 Task(priority: .userInitiated) {
                     let transcriptionManager = TranscriptionCreationManager(recording: recording)
                     await transcriptionManager.getTranscription()
+                    await MainActor.run {
+                        self.recordings = Recording.getRecordings(modelContext: modelContext)
+                    }
                 }
             }
             
