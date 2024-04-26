@@ -22,7 +22,7 @@ struct RecorderView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 if WhisperKitDownloadManager.shared.downloadProgress < 1.0 {
                     VStack {
@@ -31,11 +31,16 @@ struct RecorderView: View {
                     }
                 }
                 List(viewModel.recordings) { recording in
-                    RecordingView(recording: recording).swipeActions {
-                        Button("Delete", systemImage: "trash", role: .destructive) {
-                            modelContext.delete(recording)
+                    RecordingView(recording: recording)
+                    #if os(iOS)
+                        .swipeActions {
+                            deleteButton(forRecording: recording)
                         }
-                    }
+                    #else
+                        .contextMenu {
+                            deleteButton(forRecording: recording)
+                        }
+                    #endif
                 }
                 .navigationTitle("Voice Recorder")
                 .overlay {
@@ -78,6 +83,13 @@ struct RecorderView: View {
                 Text("Record to get started")
             }
             .offset(y: -100)
+        }
+    }
+    
+    @ViewBuilder
+    private func deleteButton(forRecording recording: Recording) -> some View {
+        Button("Delete", systemImage: "trash", role: .destructive) {
+            viewModel.deleteRecording(recording)
         }
     }
 }

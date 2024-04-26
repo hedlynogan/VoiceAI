@@ -12,14 +12,13 @@ import SwiftData
 class RecorderViewModel: ObservableObject {
     
     let recorder = AudioRecorder()
-    private let modelContainer: ModelContainer
+    private let modelContext: ModelContext
     
     @Published private(set) var isRecording: Bool = false
     @Published private(set) var recordings: [Recording]
     
     init(modelContainer: ModelContainer) {
-        self.modelContainer = modelContainer
-        let modelContext = ModelContext(modelContainer)
+        self.modelContext = ModelContext(modelContainer)
         self.recordings = Recording.getRecordings(modelContext: modelContext)
     }
     
@@ -45,12 +44,16 @@ class RecorderViewModel: ObservableObject {
         }
     }
     
+    func deleteRecording(_ recording: Recording) {
+        modelContext.delete(recording)
+        self.recordings.removeFirst(of: recording)
+    }
+    
     private func processRecording() async {
         do {
             if let recordingData = try recorder.recording?.data() {
                 
                 let recording = Recording(audioData: recordingData)
-                let modelContext = ModelContext(modelContainer)
                 modelContext.insert(recording)
                 try modelContext.save()
                 
