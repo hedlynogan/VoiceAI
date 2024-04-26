@@ -21,7 +21,7 @@ class WhisperKitDownloadManager: ObservableObject {
     #if os(iOS)
     private let model: String = ModelVariant.tinyEn.description
     #elseif os(macOS)
-    private let model: String = ModelVariant.largev3.description
+    private let model: String = ModelVariant.largev2.description
     #endif
     
     private(set) var whisperKit: WhisperKit? = nil

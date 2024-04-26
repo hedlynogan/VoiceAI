@@ -8,10 +8,13 @@
 import AVFAudio
 import WhisperKit
 
-class TranscriptionCreationManager {
+class WKTranscriptionCreationManager {
     let recording: Recording
     let languageCode: String = "en"
     let task: DecodingTask = .transcribe
+    
+    static let whisperKitModeKey = "WHISPER_KIT_MODE"
+    static let whisperKitMode = true
     
     // WhisperKit Transcription Decoder Settings
     private var temperatureStart: Float = 0
@@ -49,7 +52,7 @@ class TranscriptionCreationManager {
     {
         do {
             if let whisperKit = whisperKit,
-               let audioURL = recording.urlFromData {
+               let audioURL = recording.urlToPlay {
                 whisperKit.audioProcessor = AudioProcessor()
                 try await transcribeCurrentFile(path: audioURL.path)
             }
@@ -81,7 +84,7 @@ class TranscriptionCreationManager {
         }
         
         if let transcription = transcription {
-            await recording.processTranscription(transcription)
+            await recording.processWKTranscription(transcription)
         }
     }
     

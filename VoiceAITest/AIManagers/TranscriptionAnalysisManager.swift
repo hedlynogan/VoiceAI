@@ -9,9 +9,7 @@ import OpenAI
 
 struct TranscriptionAnalysisManager {
     // IMPORTANT: Store your keys securely via a Proxy
-    static let client: OpenAI.APIClient = OpenAI.APIClient(
-        apiKey: "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"
-    )
+    static let client = OAITranscriptionCreationManager.client
     
     static let chatModel = OpenAI.Model.chat(.gpt_4_turbo)
     private static let tokenLimit = 4096

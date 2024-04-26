@@ -13,6 +13,7 @@ class RecorderViewModel: ObservableObject {
     
     let recorder = AudioRecorder()
     private let modelContext: ModelContext
+    private let whisperKitMode = UserDefaults.standard.bool(forKey: WKTranscriptionCreationManager.whisperKitModeKey)
     
     @Published private(set) var isRecording: Bool = false
     @Published private(set) var recordings: [Recording]
@@ -61,11 +62,23 @@ class RecorderViewModel: ObservableObject {
                     self.recordings = Recording.getRecordings(modelContext: modelContext)
                 }
                 
-                Task(priority: .userInitiated) {
-                    let transcriptionManager = TranscriptionCreationManager(recording: recording)
-                    await transcriptionManager.getTranscription()
-                    await MainActor.run {
-                        self.recordings = Recording.getRecordings(modelContext: modelContext)
+                if whisperKitMode {
+                    //using on-device WhisperKit
+                    Task(priority: .userInitiated) {
+                        let transcriptionManager = WKTranscriptionCreationManager(recording: recording)
+                        await transcriptionManager.getTranscription()
+                        await MainActor.run {
+                            self.recordings = Recording.getRecordings(modelContext: modelContext)
+                        }
+                    }
+                } else {
+                    //using the OpenAI Whisper API
+                    Task(priority: .userInitiated) {
+                        let transcriptionManager = OAITranscriptionCreationManager(recording: recording)
+                        await transcriptionManager.getTranscription()
+                        await MainActor.run {
+                            self.recordings = Recording.getRecordings(modelContext: modelContext)
+                        }
                     }
                 }
             }

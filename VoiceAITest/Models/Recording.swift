@@ -37,7 +37,7 @@ class Recording {
 
 extension Recording {
     
-    var urlFromData: URL? {
+    var urlToPlay: URL? {
         do {
             guard let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
                 print("Failed to get the documents directory")
@@ -57,6 +57,23 @@ extension Recording {
         }
     }
     
+    var urlToTranscribe: URL? {
+        do {
+            guard let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+                print("Failed to get the documents directory")
+                return nil
+            }
+            
+            let fileURL = directory.appendingPathComponent("file.mp4")
+
+            try audioData.write(to: fileURL, options: .atomic)
+            return fileURL
+        } catch {
+            print("Failed to write data: \(error)")
+            return nil
+        }
+    }
+    
     var transcription: String? {
         if let transcriptionData = transcriptionData {
             return String(data: transcriptionData, encoding: .utf8)
@@ -65,7 +82,8 @@ extension Recording {
         return nil
     }
     
-    func processTranscription(_ transcription: TranscriptionResult) async {
+    // WhisperKit Transcription
+    func processWKTranscription(_ transcription: TranscriptionResult) async {
         transcriptionData = Data(transcription.text.utf8)
         isTranscribed = true
         transcription.segments.forEach {
@@ -81,17 +99,33 @@ extension Recording {
         }
     }
     
+    static private var whisperKitMode: Bool {
+        UserDefaults.standard.bool(forKey: WKTranscriptionCreationManager.whisperKitModeKey)
+    }
+    
     static func transcribeRecordings(modelContext: ModelContext) {
         let untranscribedRecordings = FetchDescriptor<Recording>(predicate: #Predicate { recording in
             recording.isTranscribed == false
         })
         do {
             try modelContext.enumerate(untranscribedRecordings) { recording in
-                let transcriptionManager = TranscriptionCreationManager(recording: recording)
-                Task(priority: .userInitiated) {
-                    await transcriptionManager.getTranscription()
-                    await TranscriptionAnalysisManager.getAnalysisForRecording(recording)
+                
+                if whisperKitMode {
+                    // Use on-device WhisperKit
+                    let transcriptionManager = WKTranscriptionCreationManager(recording: recording)
+                    Task(priority: .userInitiated) {
+                        await transcriptionManager.getTranscription()
+                        await TranscriptionAnalysisManager.getAnalysisForRecording(recording)
+                    }
+                } else {
+                    // use OpenAI API
+                    let transcriptionManager = OAITranscriptionCreationManager(recording: recording)
+                    Task(priority: .userInitiated) {
+                        await transcriptionManager.getTranscription()
+                        await TranscriptionAnalysisManager.getAnalysisForRecording(recording)
+                    }
                 }
+                
             }
         } catch {
             print(error)

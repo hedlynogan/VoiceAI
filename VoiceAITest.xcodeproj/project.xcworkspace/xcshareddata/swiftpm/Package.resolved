@@ -1,12 +1,22 @@
 {
+  "originHash" : "7356a8d6ad2fae8dd73fda077f3487d7d5e509d7c6a14966f3f3b19fdf7f5b30",
   "pins" : [
+    {
+      "identity" : "ai",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/PreternaturalAI/AI",
+      "state" : {
+        "branch" : "main",
+        "revision" : "ff181e5f786143424ee07b1eda0f98d22fcfbe4a"
+      }
+    },
     {
       "identity" : "corepersistence",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/vmanot/CorePersistence.git",
       "state" : {
         "branch" : "main",
-        "revision" : "23e71ad0933b475db824984c1c6e20f50cf1d851"
+        "revision" : "7ef8ef4c8cbe582af11cf3bed9cedcb31dfb3ac0"
       }
     },
     {
@@ -24,7 +34,7 @@
       "location" : "https://github.com/vmanot/Media",
       "state" : {
         "branch" : "main",
-        "revision" : "f65a1a8a331f33f240a21e8dd0d4a44507863c89"
+        "revision" : "7922a7bf5a676fe96d24603eb3b9b209dfb266fb"
       }
     },
     {
@@ -42,7 +52,7 @@
       "location" : "https://github.com/vmanot/NetworkKit.git",
       "state" : {
         "branch" : "master",
-        "revision" : "234fe1e42ebd866499484b67cb811ebec976d37b"
+        "revision" : "5cb51a7f82824adf104bcab5c935972a6a90a331"
       }
     },
     {
@@ -51,7 +61,7 @@
       "location" : "https://github.com/vmanot/Swallow.git",
       "state" : {
         "branch" : "master",
-        "revision" : "60080d164fb2844a389e2aeae58d6adbe496fff9"
+        "revision" : "9c0b55304972c63a8ac0e11dbe388918f08ca66c"
       }
     },
     {
@@ -136,5 +146,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
