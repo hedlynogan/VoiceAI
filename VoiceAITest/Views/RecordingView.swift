@@ -9,12 +9,12 @@ import SwiftUI
 
 struct RecordingView: View {
     
-    let recording: Recording
+    @State var recording: Recording
     
     @StateObject private var viewModel: RecordingViewModel
     
     init(recording: Recording) {
-        self.recording = recording
+        _recording = State(wrappedValue: recording)
         _viewModel = StateObject(wrappedValue: RecordingViewModel(recording: recording))
     }
     
@@ -34,9 +34,14 @@ struct RecordingView: View {
                     .italic()
             }
             Text(recording.title)
-                .font(.title2)
+                .font(.title)
             Text(viewModel.formattedDate)
                 .italic()
+            if let summary = recording.summary {
+                Text(summary)
+                    .font(.title3)
+                    .lineLimit(nil)
+            }
         }
     }
     
