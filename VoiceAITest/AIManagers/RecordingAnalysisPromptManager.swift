@@ -22,13 +22,7 @@ struct RecordingAnalysisPromptManager {
         2. A short one-sentence Summary about the recording
         3. A List of up to 5 most important points from the recording
         
-        Use the `add_recording_analyses_to_db` function to the database.
-        """
-    }
-    
-    var userPrompt: String {
-        """
-        Only return the results: Analyze the recording transcription text then return a short Title, a short one-sentence Summary, and up to 5 most important points from the recording.
+        Use the `add_recording_analysis_to_db` function to the database.
         """
     }
     
@@ -36,14 +30,14 @@ struct RecordingAnalysisPromptManager {
         struct RecordingAnalysis: Codable, Hashable, Sendable {
             var title: String
             var summary: String
-            var keyPoints: [String]
+            var keypoints: [String]
         }
         
         var recordingAnalysis: RecordingAnalysis
     }
     
     var addRecordingAnalysisFunction: AbstractLLM.ChatFunctionDefinition { AbstractLLM.ChatFunctionDefinition(
-        name: "add_recording_analyses_to_db",
+        name: "add_recording_analysis_to_db",
         context: "Add the title, summary, and five important points from this transcription of an audio recording.",
         parameters: JSONSchema(
             type: .object,
@@ -61,8 +55,9 @@ struct RecordingAnalysisPromptManager {
                                  description: "A short Title describing the recording"),
             "summary" : JSONSchema(type: .string,
                                    description: "A short one-sentence Summary about the recording"),
-            "key_points" : JSONSchema(type: .array,
-                                      description: "A List of up to 5 most important points from the recording")
+            "keypoints" : JSONSchema(type: .array,
+                                      description: "A List of up to 5 most important points from the recording",
+                                      items: .string)
         ],
         required: true
     )}
@@ -82,12 +77,12 @@ struct RecordingAnalysisPromptManager {
         let expectedResult: JSON = ["recording_analysis" : .dictionary([
             "title" : "Apple's Record-breaking Revenue and Introduction of Apple Vision Pro",
             "summary" : "Apple reports record revenue for the December quarter, achieving all-time records in various countries and regions, and introduces the revolutionary Apple Vision Pro, set to unlock unique user experiences.",
-            "key_points" : [
+            "keypoints" : .array([
                 "Apple reported revenue of $119.6 billion for the December quarter, up 2% from the previous year, with EPS of $2.18, marking a 16% increase.",
                 "Revenue records were achieved in over two dozen countries and regions, including all-time highs in Europe and rest of Asia-Pacific.",
                 "Strong double-digit growth was seen in emerging markets, with all-time revenue records set in Malaysia, Mexico, The Philippines, Poland, and Turkey, and December quarter records in India, Indonesia, Saudi Arabia, and Chile.",
                 "A new record was set for Apple's installed base, surpassing 2.2 billion active devices, along with an all-time revenue record in Services.",
-                "Apple is introducing Apple Vision Pro, described as the most advanced personal electronics device, with unique features and capabilities aimed at providing unparalleled user experiences and opportunities for developers."]
+                "Apple is introducing Apple Vision Pro, described as the most advanced personal electronics device, with unique features and capabilities aimed at providing unparalleled user experiences and opportunities for developers."])
         ])]
         
         return PromptRecordingSampleObject(

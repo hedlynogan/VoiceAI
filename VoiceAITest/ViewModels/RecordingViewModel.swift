@@ -8,13 +8,13 @@
 import SwiftUI
 import Media
 
-class RecordedObjectViewModel: ObservableObject {
+class RecordingViewModel: ObservableObject {
     
-    let recording: RecordedObjectModel
+    @Bindable var recording: Recording
     private let audioPlayer = AudioPlayer()
     @Published private(set) var isPlaying = false
     
-    init(recording: RecordedObjectModel) {
+    init(recording: Recording) {
         self.recording = recording
     }
     

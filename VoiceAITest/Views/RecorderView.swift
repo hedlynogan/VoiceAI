@@ -15,7 +15,7 @@ struct RecorderView: View {
     @StateObject private var whisperKitDownloadManager = WhisperKitDownloadManager.shared
     
     @Environment(\.modelContext) var modelContext
-    @Query(sort: \RecordedObjectModel.createdDate, order: .reverse) var recordings: [RecordedObjectModel]
+    @Query(sort: \Recording.createdDate, order: .reverse) var recordings: [Recording]
         
     init(modelContainer: ModelContainer) {
         _viewModel = StateObject(wrappedValue: RecorderViewModel(modelContainer: modelContainer))
@@ -31,7 +31,7 @@ struct RecorderView: View {
                     }
                 }
                 List(recordings) { recording in
-                    RecordedObjectView(recording: recording).swipeActions {
+                    RecordingView(recording: recording).swipeActions {
                         Button("Delete", systemImage: "trash", role: .destructive) {
                             modelContext.delete(recording)
                         }
@@ -46,7 +46,9 @@ struct RecorderView: View {
                 }
                 .onAppear {
                     Task { @MainActor in
-                        whisperKitDownloadManager.downloadModel()
+                        whisperKitDownloadManager.downloadModel(modelContext: modelContext)
+                        Recording.transcribeRecordings(modelContext: modelContext)
+                        Recording.analyzeRecordings(modelContext: modelContext)
                     }
                 }
             }

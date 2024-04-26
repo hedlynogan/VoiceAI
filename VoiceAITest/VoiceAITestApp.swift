@@ -13,8 +13,9 @@ struct VoiceAITestApp: App {
     
     let sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            RecordedObjectModel.self,
-            RecordedSegmentModel.self
+            Recording.self,
+            RecordingSegment.self,
+            RecordingKeyPoint.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         

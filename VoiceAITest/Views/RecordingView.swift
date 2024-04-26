@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct RecordedObjectView: View {
+struct RecordingView: View {
     
-    let recording: RecordedObjectModel
+    let recording: Recording
     
-    @StateObject private var viewModel: RecordedObjectViewModel
+    @StateObject private var viewModel: RecordingViewModel
     
-    init(recording: RecordedObjectModel) {
+    init(recording: Recording) {
         self.recording = recording
-        _viewModel = StateObject(wrappedValue:RecordedObjectViewModel(recording: recording))
+        _viewModel = StateObject(wrappedValue: RecordingViewModel(recording: recording))
     }
     
     var body: some View {
@@ -29,6 +29,10 @@ struct RecordedObjectView: View {
     @ViewBuilder
     private var recordingInfoView: some View {
         VStack (alignment: .leading) {
+            if recording.isTranscribed == false || recording.isAnalyzed == false {
+                Text("Processing...")
+                    .italic()
+            }
             Text(recording.title)
                 .font(.title2)
             Text(viewModel.formattedDate)

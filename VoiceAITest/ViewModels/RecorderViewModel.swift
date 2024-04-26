@@ -46,13 +46,13 @@ class RecorderViewModel: ObservableObject {
         do {
             if let recordingData = try recorder.recording?.data() {
                 
-                let recordedObjectModel = RecordedObjectModel(audioData: recordingData)
+                let recording = Recording(audioData: recordingData)
                 let modelContext = ModelContext(modelContainer)
-                modelContext.insert(recordedObjectModel)
+                modelContext.insert(recording)
                 try modelContext.save()
                 
                 Task(priority: .userInitiated) {
-                    let transcriptionManager = TranscriptionCreationManager(recording: recordedObjectModel)
+                    let transcriptionManager = TranscriptionCreationManager(recording: recording)
                     await transcriptionManager.getTranscription()
                 }
             }

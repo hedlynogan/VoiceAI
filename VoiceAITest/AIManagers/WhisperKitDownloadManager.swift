@@ -8,6 +8,7 @@
 import Foundation
 import WhisperKit
 import SwiftUI
+import SwiftData
 
 class WhisperKitDownloadManager: ObservableObject {
     
@@ -35,7 +36,7 @@ class WhisperKitDownloadManager: ObservableObject {
     
     private init() {} // Private initializer to ensure singleton usage
     
-    func fetchModel() {
+    private func fetchModel(modelContext: ModelContext) {
         availableModels = [model]
         // First check what's already downloaded
         if let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -49,6 +50,7 @@ class WhisperKitDownloadManager: ObservableObject {
                     for model in downloadedModels where !localModels.contains(model) {
                         localModels.append(model)
                         modelState = .downloaded
+                        Recording.transcribeRecordings(modelContext: modelContext)
                     }
                 } catch {
                     print("Error enumerating files at \(modelPath): \(error.localizedDescription)")
@@ -81,7 +83,7 @@ class WhisperKitDownloadManager: ObservableObject {
         }
     }
 
-    func downloadModel(redownload: Bool = false) {
+    func downloadModel(modelContext: ModelContext, redownload: Bool = false) {
         print("DOWNLOADING MODEL: \(model)")
         print("DISABLED MODELS FOR THIS DEVICE: \(WhisperKit.recommendedModels().disabled)")
         whisperKit = nil
@@ -117,8 +119,8 @@ class WhisperKitDownloadManager: ObservableObject {
             await MainActor.run {
                 self.downloadProgress = specializationProgressRatio
                 modelState = .downloaded
+                Recording.transcribeRecordings(modelContext: modelContext)
             }
-
 
             if let modelFolder = folder {
                 whisperKit.modelFolder = modelFolder
@@ -135,7 +137,7 @@ class WhisperKitDownloadManager: ObservableObject {
                 } catch {
                     print("Error prewarming models, retrying: \(error.localizedDescription)")
                     if !redownload {
-                        downloadModel(redownload: true)
+                        downloadModel(modelContext: modelContext, redownload: true)
                         return
                     } else {
                         // Redownloading failed, error out

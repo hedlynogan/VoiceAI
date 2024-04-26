@@ -10,7 +10,7 @@ import Foundation
 import WhisperKit
 
 @Model
-class RecordedSegmentModel {
+class RecordingSegment {
     
     @Attribute(.unique) var id: UUID
     let segmentIndex: Int
@@ -18,9 +18,9 @@ class RecordedSegmentModel {
     let endTime: Float
     let textData: Data
     
-    let recording: RecordedObjectModel
+    let recording: Recording
     
-    init(recording: RecordedObjectModel, segment: TranscriptionSegment) {
+    init(recording: Recording, segment: TranscriptionSegment) {
         self.id = UUID()
         self.segmentIndex = segment.id
         self.startTime = segment.start
@@ -30,7 +30,7 @@ class RecordedSegmentModel {
     }
 }
 
-extension RecordedSegmentModel {
+extension RecordingSegment {
     
     var text: String? {
         return String(data: textData, encoding: .utf8)

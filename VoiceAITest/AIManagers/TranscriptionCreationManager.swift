@@ -9,7 +9,7 @@ import AVFAudio
 import WhisperKit
 
 class TranscriptionCreationManager {
-    let recording: RecordedObjectModel
+    let recording: Recording
     let languageCode: String = "en"
     let task: DecodingTask = .transcribe
     
@@ -41,7 +41,7 @@ class TranscriptionCreationManager {
         return WhisperKitDownloadManager.shared.whisperKit
     }
     
-    init(recording: RecordedObjectModel) {
+    init(recording: Recording) {
         self.recording = recording
     }
     
@@ -78,9 +78,10 @@ class TranscriptionCreationManager {
             self.currentLag = transcription?.timings.decodingLoop ?? 0
 
             self.confirmedSegments = segments
-            if let transcription = transcription {
-                recording.processTranscription(transcription)
-            }
+        }
+        
+        if let transcription = transcription {
+            await recording.processTranscription(transcription)
         }
     }
     
